@@ -7,28 +7,65 @@
 # Version          : 1.0
 #
 # Description : This script is using "pdftk" third party program to cut the PDF files for selected pages.
+<<<<<<< HEAD
+#
+=======
 # 
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 #
 # Licensed under GPL (see /usr/share/common-licenses/GPL for more
 # details or contact the Free Software Foundation for a copy)
 
+<<<<<<< HEAD
+START=""         # variable for pdf start page
+END=""           # variable for pdf final page
+SELECTEDFILE=""  # selected PDF file
+NUMBEROFPAGES="" # how many pages does PDF file has
+EXTENSION=""     # file extension
+=======
 START="" # variable for pdf start page
 END=""   # variable for pdf final page
 SELECTEDFILE="" # selected PDF file
 NUMBEROFPAGES="" # how many pages does PDF file has
 EXTENSION="" # file extension
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 
 # file selection function
 selectFile() {
 	zenity --info --title "Information" --text "Welcome to PDF extracter. Please select a file."
 
 	# select file UI
+<<<<<<< HEAD
+	SELECTEDFILE=`zenity --file-selection`
+	ret=$?
+=======
 	SELECTEDFILE=$(zenity --file-selection)
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 
 	# finding the file's extension.
 	FILENAME=${SELECTEDFILE##*/}
 	EXTENSION=${FILENAME##*.}
 
+<<<<<<< HEAD
+	# if clicked cancel and extension is empty
+	if [ "$ret" -eq 1 ]; then
+		echo "Exiting"
+		exit
+	fi
+
+	# if the extension is not pdf then make recursion
+	while [ "$EXTENSION" != "pdf" ]; do
+		zenity --error --text "You must select a PDF file. Please select again."
+		SELECTEDFILE=$(zenity --file-selection)
+		if [ "$?" == 1 ]; then
+			echo "Exiting"
+			exit
+		fi
+		FILENAME=${SELECTEDFILE##*/}
+		EXTENSION=${FILENAME##*.}
+		
+	done
+=======
 	# if the extension is not pdf make recursion
 	while [ "$EXTENSION" != "pdf" ]; do
 		zenity --error --text "You must select a PDF file. Please select again."
@@ -37,11 +74,16 @@ selectFile() {
 		EXTENSION=${FILENAME##*.}
 	done
 
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 }
 
 # detecting the starting page for cut
 takeStartPage() {
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 	# creating a table with page numbers
 	counter=1
 	table=""
@@ -75,7 +117,11 @@ takeFinalPage() {
 
 	# creating a table with page numbers
 	# $1 = $START $2 = $NUMBEROFPAGES
+<<<<<<< HEAD
+	counter=$1
+=======
 	counter=$1 
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 	table=""
 	while [ "$counter" -le "$2" ]; do
 		x="$counter"
@@ -131,7 +177,11 @@ Student No: 191914
 EndOfMessage
 	else # if the argument is none of the -v/-h then start the program with zenity
 		selectFile
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> 9222aa7ffc9532c4a1d47c8c845290201e283cdc
 		# detecting how many pages does that pdf file has by pdftk
 		NUMBEROFPAGES=$(pdftk $SELECTEDFILE dump_data | grep NumberOfPages | sed 's/[^0-9]*//')
 		takeStartPage $NUMBEROFPAGES
