@@ -116,8 +116,11 @@ takeFinalPage() {
 
 # real extracting process
 extractPDF() {
+	# detecting the original PDF file's path
+	DIR="$(dirname "${SELECTEDFILE}")"
+
 	# pdftk code line for cuting the PDF. and the output file name is related to selected page numbers.
-	pdftk $SELECTEDFILE cat $START-$END output extracted_p$START-$END.pdf
+	pdftk $SELECTEDFILE cat $START-$END output "$DIR/extracted_$START-$END.pdf"
 
 	# success screen after extracted
 	zenity --info --title="Success" --text "Extracted successfuly" --no-wrap
@@ -133,7 +136,7 @@ main() {
 		takeFinalPage $START $NUMBEROFPAGES
 		extractPDF
 	fi
-	
+
 	if [ "$1" == "-h" ]; then # if the argument is equal to -h display the help message
 		cat <<EndOfMessage
 Welcome to PDF extractor.
