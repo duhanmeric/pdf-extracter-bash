@@ -3,8 +3,8 @@
 # Author           : Duhan Meric Korkmaz ( duhanmeric@gmail.com )
 # Created On       : 29.12.2021
 # Last Modified By : Duhan Meric Korkmaz ( duhanmeric@gmail.com )
-# Last Modified On : 31.12.2021
-# Version          : 1.0
+# Last Modified On : 11.01.2022
+# Version          : 1.1
 #
 # Description : This script is using "pdftk" third party program to cut the PDF files for selected pages.
 #
@@ -137,10 +137,10 @@ main() {
 		extractPDF
 	fi
 
-	if [ "$1" != "-v" ] && [ "$1" != "-h" ]; then # if the argument is none of the -v/-h
+	if [ "$1" != "-v" ] && [ "$1" != "-h" ] && [ "$1" != "-c" ]; then # if the argument is none of the -v/-h
 		echo "Unkown command"
 	else
-		while getopts hvq: OPT; do
+		while getopts hvc OPT; do
 			case $OPT in
 			h)
 				cat <<EndOfMessage
@@ -154,17 +154,18 @@ EndOfMessage
 				;;
 			v)
 				cat <<EndOfMessage
-Bash Script PDF Extractor, version 1.0
+Bash Script PDF Extractor, version 1.1
 Author: Duhan Meric Korkmaz.
 Email: duhanmeric@gmail.com
 Student No: 191914
 EndOfMessage
 				;;
-			q)
-				echo "Text"
-				exit
+			c)
+				cat <<EndOfMessage
+Licensed under GPL (see /usr/share/common-licenses/GPL for more
+details or contact the Free Software Foundation for a copy)
+EndOfMessage
 				;;
-			*) echo "Unknown option" ;;
 			esac
 		done
 
