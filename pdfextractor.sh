@@ -4,7 +4,7 @@
 # Created On       : 29.12.2021
 # Last Modified By : Duhan Meric Korkmaz ( duhanmeric@gmail.com )
 # Last Modified On : 11.01.2022
-# Version          : 1.3
+# Version          : 1.4
 #
 # Description : This script is using "pdftk" third party program to cut the PDF files for selected pages.
 #
@@ -148,14 +148,15 @@ main() {
 Welcome to PDF extractor.
 1. First of all you need to select a file with '.pdf' extension.
 2. After selecting a PDF file, you need to select the start page where you want to start to cut the document. If you click cancel it will exit the program
-3. Remember the click 'OK' after selecting a start page, otherwise the program will ask you the same question until you exit or until you select the page.		4. If you already passed the start page screen you are going to see 'select final page' screen. At here, same procedure continues like start page."
+3. Remember the click 'OK' after selecting a start page, otherwise the program will ask you the same question until you exit or until you select the page.		
+4. If you already passed the start page screen you are going to see 'select final page' screen. At here, same procedure continues like start page."
 5. After selecting a end page, you are going to see 'Extracted successfuly' screen."
 6. The new PDF file is in the same path with the original PDF file."
 EndOfMessage
 				;;
 			v)
 				cat <<EndOfMessage
-Bash Script PDF Extractor, version 1.2
+Bash Script PDF Extractor, version 1.4
 Author: Duhan Meric Korkmaz.
 Email: duhanmeric@gmail.com
 Student No: 191914
