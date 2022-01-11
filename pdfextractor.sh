@@ -4,7 +4,7 @@
 # Created On       : 29.12.2021
 # Last Modified By : Duhan Meric Korkmaz ( duhanmeric@gmail.com )
 # Last Modified On : 11.01.2022
-# Version          : 1.2
+# Version          : 1.3
 #
 # Description : This script is using "pdftk" third party program to cut the PDF files for selected pages.
 #
@@ -20,7 +20,7 @@ EXTENSION=""     # file extension
 
 # file selection function
 selectFile() {
-	zenity --info --title "Information" --text "Welcome to PDF extracter. Please select a file."
+	zenity --info --title "Information" --text "Welcome to PDF extractor. Please select a file."
 
 	# select file UI
 	SELECTEDFILE=$(zenity --file-selection)
@@ -137,10 +137,11 @@ main() {
 		extractPDF
 	fi
 
-	if [ "$1" != "-v" ] && [ "$1" != "-h" ] && [ "$1" != "-c" ] && [ "$1" != "-g" ]; then # if the argument is none of the -v/-h
+	# if the argument is none of the -v/-h
+	if [ "$1" != "-v" ] && [ "$1" != "-h" ] && [ "$1" != "-c" ] && [ "$1" != "-g" ]; then 
 		echo "Unkown command"
 	else
-		while getopts hvcg OPT; do
+		while getopts hvcg OPT; do # take options for -help -version -copyright -github
 			case $OPT in
 			h)
 				cat <<EndOfMessage
@@ -169,8 +170,11 @@ EndOfMessage
 			g)
 				cat <<EndOfMessage
 author github (actually a web developer): https://github.com/duhanmeric
+author website: https://duhanmeric.herokuapp.com
 EndOfMessage
 				;;
+			# there is no "*" option for this switch case because it already been made
+			# in if else section above
 			esac
 		done
 
