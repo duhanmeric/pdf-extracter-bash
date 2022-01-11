@@ -4,7 +4,7 @@
 # Created On       : 29.12.2021
 # Last Modified By : Duhan Meric Korkmaz ( duhanmeric@gmail.com )
 # Last Modified On : 11.01.2022
-# Version          : 1.1
+# Version          : 1.2
 #
 # Description : This script is using "pdftk" third party program to cut the PDF files for selected pages.
 #
@@ -137,10 +137,10 @@ main() {
 		extractPDF
 	fi
 
-	if [ "$1" != "-v" ] && [ "$1" != "-h" ] && [ "$1" != "-c" ]; then # if the argument is none of the -v/-h
+	if [ "$1" != "-v" ] && [ "$1" != "-h" ] && [ "$1" != "-c" ] && [ "$1" != "-g" ]; then # if the argument is none of the -v/-h
 		echo "Unkown command"
 	else
-		while getopts hvc OPT; do
+		while getopts hvcg OPT; do
 			case $OPT in
 			h)
 				cat <<EndOfMessage
@@ -154,7 +154,7 @@ EndOfMessage
 				;;
 			v)
 				cat <<EndOfMessage
-Bash Script PDF Extractor, version 1.1
+Bash Script PDF Extractor, version 1.2
 Author: Duhan Meric Korkmaz.
 Email: duhanmeric@gmail.com
 Student No: 191914
@@ -164,6 +164,11 @@ EndOfMessage
 				cat <<EndOfMessage
 Licensed under GPL (see /usr/share/common-licenses/GPL for more
 details or contact the Free Software Foundation for a copy)
+EndOfMessage
+				;;
+			g)
+				cat <<EndOfMessage
+author github (actually a web developer): https://github.com/duhanmeric
 EndOfMessage
 				;;
 			esac
